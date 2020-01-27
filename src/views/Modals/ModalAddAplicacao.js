@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import api from "../../services/api";
 
-
 class ModalAddAplicacao extends Component {
   constructor(props) {
     super(props);
@@ -13,9 +12,11 @@ class ModalAddAplicacao extends Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  postAplicacaoHandler = props => {
-      return api.post('/server.json')
-  }
+  /* addAplicacaoHandler = nome => {
+    const { addAplicacaoRequest } = this.props;
+    // Início addAplicacao. Tem que terminar.
+    addAplicacaoRequest(nome);
+  }; */
 
   toggle() {
     this.setState({
@@ -25,8 +26,12 @@ class ModalAddAplicacao extends Component {
 
   render() {
     return (
-      <div className="Modal" style={{ float: "right"}}>
-        <Button style={{margin:"47px 536px 0px 0px"}} color="primary" onClick={this.toggle}>
+      <div className="Modal" style={{ float: "right" }}>
+        <Button
+          style={{ margin: "47px 536px 0px 0px" }}
+          color="primary"
+          onClick={this.toggle}
+        >
           Criar aplicação
         </Button>
         <Modal
@@ -41,7 +46,7 @@ class ModalAddAplicacao extends Component {
             </p>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.postAplicacaoHandler}>
+            <Button color="primary" onClick={this.addAplicacaoHandler}>
               Adicionar aplicação
             </Button>{" "}
             <Button color="danger" onClick={this.toggle}>

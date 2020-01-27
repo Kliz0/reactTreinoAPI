@@ -1,6 +1,13 @@
-export function addAplicacao(nome) {
+export function addAplicacaoRequest(nome) {
     return {
-        type: '@aplicacoes/addAplicacao',
+        type: '@aplicacoes/ADD_REQUEST',
         nome,
     };
+}
+
+export function addAplicacaoSucess(aplicacao) {
+    return {
+        type: '@aplicacoes/ADD_SUCESS',
+        aplicacao,
+    }
 }
