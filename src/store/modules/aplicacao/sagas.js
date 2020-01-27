@@ -5,7 +5,7 @@ import api from '../../../services/api';
 import { addAplicacaosSucess } from './actions'
 
 function* addAplicacao( {id} ) {
-    const response = yield call(api.get, `/aplicacao/${id}`);
+    const response = yield call(api.post, `/aplicacao/${id}`);
 
     yield put(addAplicacaosSucess(response.data));
 }
