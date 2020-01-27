@@ -1,0 +1,24 @@
+{
+  "aplicacoes": [
+    {
+      "id": 1,
+      "Nome": "Aplicação Abc",
+      "Servicos": ["A", "B", "C"]
+    },
+    {
+      "id": 2,
+      "Nome": "Aplicação Bcd",
+      "Servicos": ["A", "B", "C"]
+    },
+    {
+      "id": 3,
+      "Nome": "Aplicação Cde",
+      "Servicos": ["A", "B", "C"]
+    },
+    {
+      "id": 4,
+      "Nome": "Aplicação Def",
+      "Servicos": ["A", "B", "C"]
+    }
+  ]
+}

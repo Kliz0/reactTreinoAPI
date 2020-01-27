@@ -1,30 +1,45 @@
 import React, { Component, lazy, Suspense, useState } from "react";
 
 import { InputGroup, InputGroupText, InputGroupAddon, Input } from "reactstrap";
-import {
-  Table,
-  Button
-} from "reactstrap";
+import { Table, Button } from "reactstrap";
+import api from "../../services/api";
+import ModalAddServico from "../Modals/ModalAddServico";
 
 class Aplicacao extends Component {
+  state = {
+    servicos: []
+  };
+
+  async componentDidMount() {
+    api
+      .get(`http://localhost:3333/aplicacao/{aplicacao.id}/{servico.id}`)
+      .then(response => {
+        this.setState({ servicos: response.data });
+      });
+
+    const {
+      match: { params }
+    } = this.props;
+
+    api
+      .get(`http://localhost:3333/aplicacao/${params.idAplicacao}`)
+      .then(({ data: aplicacao }) => {
+        console.log("aplicacao", aplicacao);
+
+        this.setState({ aplicacao });
+      });
+  }
+
   render() {
+    const { servicos } = this.state;
+
     return (
       <>
-        <h1 style={{ textAlign: "center" }}> Nome Aplicação Específica</h1>
+        <h1 style={{ textAlign: "center" }}>
+          {this.state.aplicacao ? this.state.aplicacao.Nome : undefined}{" "}
+        </h1>
 
-        <h2>Botão de adicionar Servico com modal dele!</h2>
-        <h2>Lista de Servicos com link deles!</h2>
-        <Button
-          color="primary"
-          style={{
-            float: "right",
-            marginRight: 430,
-            marginTop: 193,
-            fontSize: 18
-          }}
-        >
-          Adicionar Servico
-        </Button>
+        <ModalAddServico />
 
         <div
           style={{
@@ -35,12 +50,14 @@ class Aplicacao extends Component {
           }}
         >
           <Table
+            striped
             hover
             bordered
             style={{
               width: "60%",
               margin: "20px, 300px, 20px, 500px",
-              boxSizing: "border-box"
+              boxSizing: "border-box",
+              textAlign: "center"
             }}
           >
             <thead style={{ fontSize: 18, fontWeight: "bold" }}>
@@ -52,42 +69,21 @@ class Aplicacao extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Nome Servico 1 Link para ele</td>
-                <td>Data Início 1</td>
-                <td>Data Fim 1</td>
-                <td>Status 1</td>
-              </tr>
-              <tr>
-                <td>Nome Servico 2</td>
-                <td>Data Início 2</td>
-                <td>Data Fim 2</td>
-                <td>Status 2</td>
-              </tr>
-              <tr>
-                <td>Nome Servico 3</td>
-                <td>Data Início 3</td>
-                <td>Data Fim 3</td>
-                <td>Status 3</td>
-              </tr>
-              <tr>
-                <td>Nome Servico 1</td>
-                <td>Data Início 1</td>
-                <td>Data Fim 1</td>
-                <td>Status 1</td>
-              </tr>
-              <tr>
-                <td>Nome Servico 2</td>
-                <td>Data Início 2</td>
-                <td>Data Fim 2</td>
-                <td>Status 2</td>
-              </tr>
-              <tr>
-                <td>Nome Servico 3</td>
-                <td>Data Início 3</td>
-                <td>Data Fim 3</td>
-                <td>Status 3</td>
-              </tr>
+              {servicos.map(servico => (
+                <tr key={servico.id}>
+                  <td>
+                    {" "}
+                    <a
+                      href={`http://localhost:3333/aplicacoes/${this.state.aplicacao.id}/servicos/${servico.id}`}
+                    >
+                      {servico.Nome}
+                    </a>
+                  </td>
+                  <td>{servico.dataInicio}</td>
+                  <td>{servico.dataFim}</td>
+                  <td>{servico.Status}</td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </div>

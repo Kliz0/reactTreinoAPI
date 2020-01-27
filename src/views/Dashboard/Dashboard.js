@@ -1,7 +1,6 @@
-import React, { Component, lazy, Suspense } from 'react';
+import React, { Component, lazy, Suspense } from "react";
 import {
   Badge,
-  Button,
   ButtonDropdown,
   ButtonGroup,
   ButtonToolbar,
@@ -17,98 +16,91 @@ import {
   DropdownToggle,
   Progress,
   Row,
-  Table,
-} from 'reactstrap';
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities'
-import BrandButtons from '../Buttons/BrandButtons/BrandButtons';
+  Table
+} from "reactstrap";
 
-const Widget03 = lazy(() => import('../Widgets/Widget03'));
+import api from "../../services/api";
+import { InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { getStyle, hexToRgba } from "@coreui/coreui/dist/js/coreui-utilities";
+import Aplicacao from "../Aplicacao/Aplicacao";
+import ModalAddAplicacao from "../Modals/ModalAddAplicacao";
+import { Link } from "react-router-dom";
 
-const brandPrimary = getStyle('--primary')
-const brandSuccess = getStyle('--success')
-const brandInfo = getStyle('--info')
-const brandWarning = getStyle('--warning')
-const brandDanger = getStyle('--danger')
+const Widget03 = lazy(() => import("../Widgets/Widget03"));
+const brandPrimary = getStyle("--primary");
+const brandSuccess = getStyle("--success");
+const brandInfo = getStyle("--info");
+const brandWarning = getStyle("--warning");
+const brandDanger = getStyle("--danger");
 
 // Card Chart 1
 
-
 class Dashboard extends Component {
+  loading = () => (
+    <div className="animated fadeIn pt-1 text-center">Loading...</div>
+  );
 
-  loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
+  state = {
+    aplicacoes: []
+  };
+
+  async componentDidMount() {
+    api.get("http://localhost:3333/aplicacoes").then(response => {
+      this.setState({ aplicacoes: response.data });
+    });
+  }
 
   render() {
-
+    const { aplicacoes } = this.state;
     return (
-        <>
+      <>
         <Breadcrumb>
-        <BreadcrumbItem active>Monitor</BreadcrumbItem>
-      </Breadcrumb>
+          <BreadcrumbItem active>Monitor</BreadcrumbItem>
+        </Breadcrumb>
 
-        <h1 style={{ textAlign: "center"}}> Monitor</h1>
-                 
-        <h2 style={{textAlign: "center"}}>Lista de aplicações</h2>
+        <h1 style={{ textAlign: "center" }}> Monitor</h1>
 
-        <div style={{ width: "100%", alignItems: "center", boxAlign: "center", 
-        marginTop: 50}}>
-          <Button color="primary" style={{ float: "right", marginRight: 535, fontSize: 18}}>
-            Adicionar Aplicação
-          </Button>
+        <h2 style={{ textAlign: "center" }}>Lista de aplicações</h2>
+
+        <ModalAddAplicacao color="primary" />
+
+        <div
+          style={{
+            width: "100%",
+            alignItems: "center",
+            boxAlign: "center",
+            marginTop: 90
+          }}
+        >
+          <Table
+            striped
+            hover
+            bordered
+            style={{
+              width: 1000,
+              textAlign: "left",
+              paddingLeft: 50,
+              boxAlign: "center",
+              margin: "0px 540px 0px 540px"
+            }}
+          >
+            <thead style={{ fontSize: 18, fontWeight: "bold" }}>
+              <tr>
+                <th>Nome Aplicação</th>
+              </tr>
+            </thead>
+            <tbody style={{ fontSize: 18 }}>
+              {aplicacoes.map(aplicacao => (
+                <tr key={aplicacao.id}>
+                  <Link to={`/aplicacao/${aplicacao.id}`}>
+                    {aplicacao.Nome}
+                  </Link>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         </div>
-        <div style={{ width: "100%", alignItems: "center", boxAlign: "center", 
-        marginTop: 90}}>
-        <Table hover bordered style={{
-           
-           width: 1000, textAlign: "left", paddingLeft: 50,
-          boxAlign: "center", margin: "0px 540px 0px 540px", 
-      }}>
-      <thead style={{fontSize: 18, fontWeight: "bold"}}>
-        <tr>
-          <th>Nome Aplicação</th>
-          {/*style={{float: "right", width: 350, border: "5px red solid"}}>
-            <InputGroup>
-            <Input placeholder="Nome aplicação" />
-            <InputGroupAddon addonType="append" size="sm" >
-              <Button color="secondary">Buscar</Button>
-            </InputGroupAddon>
-    </InputGroup> */}
-        </tr>
-      </thead>
-      <tbody style={{fontSize: 18 }}>
-        <tr>
-          <td>Nome Aplicação 1</td>
-          
-        </tr>
-        <tr>
-          <td>Nome Aplicação 2</td>
-        </tr>
-        <tr>
-          <td>Nome Aplicação 3</td>
-        </tr>
-        <tr>
-          <td>Nome Aplicação 1</td>
-        </tr>
-        <tr>
-          <td>Nome Aplicação 2</td>
-        </tr>
-        <tr>
-          <td>Nome Aplicação 3</td>
-        </tr>
-        <tr>
-          <td>Nome Aplicação 1</td>
-        </tr>
-        <tr>
-          <td>Nome Aplicação 2</td>
-        </tr>
-        <tr>
-          <td>Nome Aplicação 3</td>
-        </tr>
-      </tbody>
-    </Table>
-    </div> 
-       
       </>
     );
   }

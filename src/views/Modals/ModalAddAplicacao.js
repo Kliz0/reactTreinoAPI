@@ -1,0 +1,57 @@
+import React, { Component } from "react";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import api from "../../services/api";
+
+
+class ModalAddAplicacao extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  postAplicacaoHandler = props => {
+      return api.post('/server.json')
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
+  render() {
+    return (
+      <div className="Modal" style={{ float: "right"}}>
+        <Button style={{margin:"47px 536px 0px 0px"}} color="primary" onClick={this.toggle}>
+          Criar aplicação
+        </Button>
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          className={this.props.className}
+        >
+          <ModalHeader toggle={this.toggle}>Criar Aplicação</ModalHeader>
+          <ModalBody>
+            <p>
+              Nome da aplicação: <input type="Name" />
+            </p>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={this.postAplicacaoHandler}>
+              Adicionar aplicação
+            </Button>{" "}
+            <Button color="danger" onClick={this.toggle}>
+              Cancelar
+            </Button>
+          </ModalFooter>
+        </Modal>
+      </div>
+    );
+  }
+}
+
+export default ModalAddAplicacao;
