@@ -8,6 +8,7 @@ export default function aplicacao(state = [], action) {
             })
 
 
-        default:     
-    }
+        default:    
+            return state;
+    }   
 }

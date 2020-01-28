@@ -2,12 +2,12 @@ import { call, put, all, takeLatest} from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
-import { addAplicacaosSucess } from './actions'
+import { addAplicacaoSucess } from './actions'
 
 function* addAplicacao( {id} ) {
     const response = yield call(api.post, `/aplicacao/${id}`);
 
-    yield put(addAplicacaosSucess(response.data));
+    yield put(addAplicacaoSucess(response.data));
 }
 
 export default all([

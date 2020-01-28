@@ -65,7 +65,7 @@ class Aplicacao extends Component {
           >
             <thead style={{ fontSize: 18, fontWeight: "bold" }}>
               <tr>
-                <th>Servicos</th>
+                <th>Serviço</th>
                 <th>Data Início</th>
                 <th>Data Fim</th>
                 <th>Status</th>
