@@ -15,9 +15,12 @@ class ModalAddAplicacao extends Component {
   }
 
   addAplicacaoHandler = nome => {
-    const { addAplicacaoRequest } = this.props;
+    const { dispatch } = this.props;
     // Início addAplicacao. Tem que terminar.
-    addAplicacaoRequest(nome);
+    dispatch({
+      type: '@aplicacoes/ADD_REQUEST',
+      nome
+    });
   };
 
   toggle() {

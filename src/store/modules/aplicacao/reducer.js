@@ -8,9 +8,13 @@ export default function aplicacao(state = [], action) {
       });
 
     case "@aplicacoes/ADD_REQUEST":
-      return 
+        return [...state, action.aplicacao];
+      
+    case "@aplicacoes/GUARDAR_APLICACOES_TESTE":
+        return state;
 
     default:
       return state;
   }
 }
+

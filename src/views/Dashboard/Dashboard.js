@@ -52,7 +52,10 @@ class Dashboard extends Component {
     });
   }
 
+  aplicacao = this.props.aplicacao;
+
   render() {
+    console.log(this.aplicacao);
     const { aplicacoes } = this.state;
     return (
       <>
