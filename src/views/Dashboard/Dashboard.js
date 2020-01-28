@@ -26,7 +26,7 @@ import { getStyle, hexToRgba } from "@coreui/coreui/dist/js/coreui-utilities";
 import Aplicacao from "../Aplicacao/Aplicacao";
 import ModalAddAplicacao from "../Modals/ModalAddAplicacao";
 import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 const Widget03 = lazy(() => import("../Widgets/Widget03"));
 const brandPrimary = getStyle("--primary");
@@ -111,7 +111,8 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  aplicacao: state.aplicacao
+  aplicacao: state.aplicacao,
+  aplicacoes: state.aplicacoes
 });
 
 export default connect(mapStateToProps)(Dashboard);

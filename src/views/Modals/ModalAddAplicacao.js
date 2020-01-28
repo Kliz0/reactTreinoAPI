@@ -18,7 +18,7 @@ class ModalAddAplicacao extends Component {
     const { dispatch } = this.props;
     // Início addAplicacao. Tem que terminar.
     dispatch({
-      type: '@aplicacoes/ADD_REQUEST',
+      type: "@aplicacoes/ADD_REQUEST",
       nome
     });
   };
