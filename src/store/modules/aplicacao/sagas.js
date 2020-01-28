@@ -4,12 +4,17 @@ import api from '../../../services/api';
 
 import { addAplicacaoSucess } from './actions'
 
-function* addAplicacao( {id} ) {
+function* addAplicacao( {id, nome} ) {
+    if(nome !== this.state.aplicacoes) {
     const response = yield call(api.post, `/aplicacao/${id}`);
 
-    yield put(addAplicacaoSucess(response.data));
+    yield put(addAplicacaoSucess(response.data)); 
+    } else {
+        return Error; // placeholder
+    }
 }
 
 export default all([
     takeLatest('@aplicacoes/ADD_REQUEST', addAplicacao),
+    takeLatest('@aplicacoes/ADD_SUCESS', addAplicacaoSucess)
 ]);
