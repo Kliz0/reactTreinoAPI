@@ -4,7 +4,6 @@ import axios from "axios";
 import { render } from "enzyme";
 import api from "../../services/api";
 
-
 class ModalAddServico extends Component {
   constructor(props) {
     super(props);
@@ -16,8 +15,8 @@ class ModalAddServico extends Component {
   }
 
   postServicoHandler = props => {
-      return api.post('/server.json')
-  }
+    return api.post("/server.json");
+  };
 
   toggle() {
     this.setState({
@@ -27,8 +26,12 @@ class ModalAddServico extends Component {
 
   render() {
     return (
-      <div className="Modal" style={{ float: "right"}}>
-        <Button style={{margin:"47px 430px 0px 0px"}} color="primary" onClick={this.toggle}>
+      <div className="Modal" style={{ float: "right" }}>
+        <Button
+          style={{ margin: "47px 430px 0px 0px" }}
+          color="primary"
+          onClick={this.toggle}
+        >
           Criar serviço
         </Button>
         <Modal
@@ -38,7 +41,7 @@ class ModalAddServico extends Component {
         >
           <ModalHeader toggle={this.toggle}>Criar Serviço</ModalHeader>
           <ModalBody>
-            <p style={{textAlign: "center", marginTop: 20}}>
+            <p style={{ textAlign: "center", marginTop: 20 }}>
               Nome do serviço: <input type="Name" />
             </p>
           </ModalBody>

@@ -1,14 +1,16 @@
-import produce from 'immer';
+import produce from "immer";
 
 export default function aplicacao(state = [], action) {
-    switch(action.type) {
-        case '@aplicacoes/ADD_SUCESS':
-            return produce(state, draft => {
-                const aplicacaoNome = draft.aplicacaoNome(a => a.Nome)
-            })
+  switch (action.type) {
+    case "@aplicacoes/ADD_SUCESS":
+      return produce(state, draft => {
+        const aplicacaoNome = draft.aplicacaoNome(a => a.Nome);
+      });
 
+    case "@aplicacoes/ADD_REQUEST":
+      return 
 
-        default:    
-            return state;
-    }   
+    default:
+      return state;
+  }
 }

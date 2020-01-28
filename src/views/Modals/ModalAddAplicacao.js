@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import api from "../../services/api";
+import { connect } from "react-redux";
+import aplicacao from "../../store/modules/aplicacao/reducer";
 
 class ModalAddAplicacao extends Component {
   constructor(props) {
@@ -12,11 +14,11 @@ class ModalAddAplicacao extends Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  /* addAplicacaoHandler = nome => {
+  addAplicacaoHandler = nome => {
     const { addAplicacaoRequest } = this.props;
     // Início addAplicacao. Tem que terminar.
     addAplicacaoRequest(nome);
-  }; */
+  };
 
   toggle() {
     this.setState({
@@ -46,7 +48,10 @@ class ModalAddAplicacao extends Component {
             </p>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.addAplicacaoHandler}>
+            <Button
+              color="primary"
+              onClick={() => this.addAplicacaoHandler(aplicacao)}
+            >
               Adicionar aplicação
             </Button>{" "}
             <Button color="danger" onClick={this.toggle}>
@@ -59,4 +64,8 @@ class ModalAddAplicacao extends Component {
   }
 }
 
-export default ModalAddAplicacao;
+const mapStateToProps = state => ({
+  aplicacao: state.aplicacao
+});
+
+export default connect(mapStateToProps)(ModalAddAplicacao);

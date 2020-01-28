@@ -21,16 +21,16 @@ class Aplicacao extends Component {
       match: { params }
     } = this.props;
 
-     api
+    api
       .get(`http://localhost:3333/aplicacao/${params.idAplicacao}`)
       .then(({ data: aplicacao }) => {
         console.log("aplicacao", aplicacao);
 
         this.setState({ aplicacao });
-      }); 
+      });
 
-      const response = await api.get('Servicos');
-      this.setState({ Servicos: response.data});
+    const response = await api.get("Servicos");
+    this.setState({ Servicos: response.data });
   }
 
   render() {
