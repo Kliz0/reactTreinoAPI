@@ -4,7 +4,9 @@ export default function aplicacao(state = [], action) {
   switch (action.type) {
     case "@aplicacoes/ADD_SUCESS":
       return produce(state, draft => {
-        draft.push(action.aplicacao);
+        const { aplicacao } = action;
+        draft.push(aplicacao);
+        // draft.push(action.aplicacao);
       });
 
     /* case "@aplicacoes/ADD_REQUEST":

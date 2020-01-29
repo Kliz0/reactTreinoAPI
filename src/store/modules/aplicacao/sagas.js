@@ -1,21 +1,26 @@
-import { call, put, all, takeLatest } from "redux-saga/effects";
+import { call, put, all, takeLatest, select } from "redux-saga/effects";
 
 import api from "../../../services/api";
 
 import { addAplicacaoSucess } from "./actions";
 
 function* addAplicacao({ id, nome }) {
-  if (nome !== this.state.aplicacoes.aplicacao.nome) {
-    id = this.state.aplicacoes.length + 1;
-    const response = yield call(api.post, `/aplicacao/${id}`);
+  const aplicacaoExiste = yield select(state =>
+    state.aplicacao.find(a => a.nome === nome)
+  );
 
-    yield put(addAplicacaoSucess(response.data));
-    console.log(this.state.aplicacoes);
+  if (aplicacaoExiste) {
+    console.log("Erro, nome igual na API");
   } else {
-    return Error; // placeholder
+    const response = yield call(api.post, `/aplicacao/${id}`);
+    const data = {
+      ...response.data,
+      id: Math.random * 1000
+    };
+
+    yield put(addAplicacaoSucess(data));
+    console.log(this.state.aplicacoes);
   }
 }
 
-export default all([
-  takeLatest("@aplicacoes/ADD_REQUEST", addAplicacao)
-]);
+export default all([takeLatest("@aplicacoes/ADD_REQUEST", addAplicacao)]);
