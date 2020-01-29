@@ -55,7 +55,6 @@ class Dashboard extends Component {
   aplicacao = this.props.aplicacao;
 
   render() {
-    console.log(this.aplicacao);
     const { aplicacoes } = this.state;
     return (
       <>
@@ -96,8 +95,8 @@ class Dashboard extends Component {
             </thead>
             <tbody style={{ fontSize: 18 }}>
               {aplicacoes.map(aplicacao => (
-                <tr key={aplicacao.id}>
-                  <Link to={`/aplicacao/${aplicacao.id}`}>
+                <tr key={aplicacao.idAplicacao}>
+                  <Link to={`/aplicacao/${aplicacao.idAplicacao}`}>
                     {aplicacao.Nome}
                   </Link>
                 </tr>

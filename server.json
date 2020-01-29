@@ -1,7 +1,7 @@
 {
   "aplicacoes": [
     {
-      "id": 1,
+      "idAplicacao": 1,
       "Nome": "Aplicação Abc",
       "servicos": [
         {
@@ -23,7 +23,7 @@
     },
 
     {
-      "id": 2,
+      "idAplicacao": 2,
       "Nome": "Aplicação Bcd",
       "servicos": [
         {
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "id": 3,
+      "idAplicacao": 3,
       "Nome": "Aplicação Cde",
       "servicos": [
         {

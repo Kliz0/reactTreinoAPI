@@ -11,15 +11,15 @@ class Aplicacao extends Component {
   };
 
   async componentDidMount() {
-    api
-      .get(`http://localhost:3333/aplicacao/{aplicacao.id}/{servico.id}`)
-      .then(response => {
-        this.setState({ servicos: response.data });
-      });
-
     const {
       match: { params }
     } = this.props;
+
+    api
+      .get(`http://localhost:3333/aplicacao/${params.idAplicacao}/servicos`)
+      .then(response => {
+        this.setState({ servicos: response.data });
+      });
 
     api
       .get(`http://localhost:3333/aplicacao/${params.idAplicacao}`)
@@ -30,8 +30,10 @@ class Aplicacao extends Component {
       });
 
     const response = await api.get("servicos");
-    this.setState({ Servicos: response.data });
+    this.setState({ servicos: response.data });
   }
+
+  servico = this.props.servico;
 
   render() {
     const { servicos } = this.state;
