@@ -10,7 +10,7 @@ function* addAplicacao({ id, nome }) {
     const response = yield call(api.post, `/aplicacao/${id}`);
 
     yield put(addAplicacaoSucess(response.data));
-    console.log(id, nome);
+    console.log(this.state.aplicacoes);
   } else {
     return Error; // placeholder
   }
