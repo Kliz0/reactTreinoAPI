@@ -6,9 +6,11 @@ import { addAplicacaoSucess } from "./actions";
 
 function* addAplicacao({ id, nome }) {
   if (nome !== this.state.aplicacoes.aplicacao.nome) {
+    id = this.state.aplicacoes.length + 1;
     const response = yield call(api.post, `/aplicacao/${id}`);
 
     yield put(addAplicacaoSucess(response.data));
+    console.log(id, nome);
   } else {
     return Error; // placeholder
   }

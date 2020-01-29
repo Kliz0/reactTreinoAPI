@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import api from "../../services/api";
 import { connect } from "react-redux";
 import aplicacao from "../../store/modules/aplicacao/reducer";
 
@@ -47,7 +46,7 @@ class ModalAddAplicacao extends Component {
           <ModalHeader toggle={this.toggle}>Criar Aplicação</ModalHeader>
           <ModalBody>
             <p>
-              Nome da aplicação: <input type="Name" />
+              Nome da aplicação: <input type="text" />
             </p>
           </ModalBody>
           <ModalFooter>

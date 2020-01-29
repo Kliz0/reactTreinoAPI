@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import axios from "axios";
-import { render } from "enzyme";
-import api from "../../services/api";
+import { connect } from 'react-redux';
+import servico from '../../store/modules/servico/reducer';
 
 class ModalAddServico extends Component {
   constructor(props) {
@@ -14,10 +13,14 @@ class ModalAddServico extends Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  postServicoHandler = props => {
-    return api.post("/server.json");
+  addServicoHandler = nome => {
+    const { dispatch } = this.props;
+    // Início addAplicacao. Tem que terminar.
+    dispatch({
+      type: "@aplicacoes/ADD_REQUEST",
+      nome
+    });
   };
-
   toggle() {
     this.setState({
       modal: !this.state.modal
@@ -42,11 +45,11 @@ class ModalAddServico extends Component {
           <ModalHeader toggle={this.toggle}>Criar Serviço</ModalHeader>
           <ModalBody>
             <p style={{ textAlign: "center", marginTop: 20 }}>
-              Nome do serviço: <input type="Name" />
+              Nome do serviço: <input type="text" />
             </p>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.postServiçoHandler}>
+            <Button color="primary" onClick={() => this.addServicoHandler(servico)}>
               Adicionar Serviço
             </Button>{" "}
             <Button color="danger" onClick={this.toggle}>
@@ -59,4 +62,9 @@ class ModalAddServico extends Component {
   }
 }
 
-export default ModalAddServico;
+const mapStateToProps = state => ({
+  servico: state.servico,
+  servicos: state.servicos
+});
+
+export default connect(mapStateToProps)(ModalAddServico);
