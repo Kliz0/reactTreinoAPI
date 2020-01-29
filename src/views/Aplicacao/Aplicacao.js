@@ -1,9 +1,9 @@
-import React, { Component, lazy, Suspense, useState } from "react";
+import React, { Component } from "react";
 
-import { InputGroup, InputGroupText, InputGroupAddon, Input } from "reactstrap";
 import { Table, Button } from "reactstrap";
 import api from "../../services/api";
 import ModalAddServico from "../Modals/ModalAddServico";
+import { Link } from "react-router-dom";
 
 class Aplicacao extends Component {
   state = {
@@ -29,7 +29,7 @@ class Aplicacao extends Component {
         this.setState({ aplicacao });
       });
 
-    const response = await api.get("Servicos");
+    const response = await api.get("servicos");
     this.setState({ Servicos: response.data });
   }
 
@@ -66,25 +66,20 @@ class Aplicacao extends Component {
             <thead style={{ fontSize: 18, fontWeight: "bold" }}>
               <tr>
                 <th>Serviço</th>
-                <th>Data Início</th>
-                <th>Data Fim</th>
-                <th>Status</th>
+                <th>Lista de Execução</th>
               </tr>
             </thead>
             <tbody>
               {servicos.map(servico => (
                 <tr key={servico.id}>
                   <td>
-                    {" "}
-                    <a
-                      href={`http://localhost:3333/aplicacoes/${this.state.aplicacao.id}/servicos/${servico.id}`}
+                    <Link
+                      to={`http://localhost:3333/aplicacoes/${this.state.aplicacao.id}/servicos/${servico.id}`}
                     >
                       {servico.Nome}
-                    </a>
+                    </Link>
                   </td>
-                  <td>{servico.dataInicio}</td>
-                  <td>{servico.dataFim}</td>
-                  <td>{servico.Status}</td>
+                  <td>{servico.ListaDeExecucao}</td>
                 </tr>
               ))}
             </tbody>
