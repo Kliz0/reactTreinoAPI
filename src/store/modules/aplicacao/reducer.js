@@ -7,8 +7,8 @@ export default function aplicacao(state = [], action) {
         draft.push(action.aplicacao);
       });
 
-    case "@aplicacoes/ADD_REQUEST":
-      return [...state, action.aplicacao];
+    /* case "@aplicacoes/ADD_REQUEST":
+      return [...state, action.aplicacao]; */
 
     case "@aplicacoes/GUARDAR_APLICACOES_TESTE":
       return state;
