@@ -6,7 +6,7 @@ import {  addAplicacaoSucess } from "./actions";
 
 function* addAplicacaoRequest(nome, id) {
   const aplicacaoExiste = yield select(state =>
-    state.aplicacao.find(a => a.nome === nome),
+    state.aplicacoes.find(a => a.nome === nome),
     console.log(this.state.aplicacoes)
   );
 

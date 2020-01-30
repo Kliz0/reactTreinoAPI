@@ -17,7 +17,9 @@ export default function aplicacoes(state = [api.get(aplicacoes)], action) {
       });
 
     case "@aplicacoes/ADD_REQUEST":
-      return { ...state.aplicacoes, aplicacoes: [...state.aplicacoes, action.nome] };
+      return { ...state.aplicacoes, aplicacoes: [...state.aplicacoes, action.nome] }
+      
+      
 
     case "@aplicacoes/GUARDAR_APLICACOES":
       return { ...state, aplicacoes: action.aplicacoes };
