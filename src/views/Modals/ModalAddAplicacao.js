@@ -15,7 +15,7 @@ class ModalAddAplicacao extends Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  mudarNome = evt => {
+  mudarNomeHandler = evt => {
     this.setState({
       nomeAplicacao: evt.target.value
     });
@@ -53,7 +53,7 @@ class ModalAddAplicacao extends Component {
               <input
                 type="text"
                 value={this.state.nomeAplicacao}
-                onChange={this.mudarNome}
+                onChange={this.mudarNomeHandler}
               />
             </p>
           </ModalBody>
