@@ -1,6 +1,6 @@
 import produce from "immer";
 
-export default function servico(state = [], action) {
+export default function servicos(state = [], action) {
   switch (action.type) {
     case "@servicos/ADD_SUCESS":
       return produce(state, draft => {
@@ -10,7 +10,7 @@ export default function servico(state = [], action) {
     case "@servicos/ADD_REQUEST":
       return [...state, action.servico];
 
-    case "@aplicacoes/GUARDAR_APLICACOES_TESTE":
+    case "@servicos/GUARDAR_APLICACOES_TESTE":
       return state;
 
     default:

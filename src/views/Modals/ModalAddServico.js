@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { connect } from 'react-redux';
-import servico from '../../store/modules/servico/reducer';
+import servico from '../../store/modules/servicos/reducer';
 
 class ModalAddServico extends Component {
   constructor(props) {

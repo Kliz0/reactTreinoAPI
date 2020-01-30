@@ -23,4 +23,7 @@ function* addAplicacao({ id, nome }) {
   }
 }
 
-export default all([takeLatest("@aplicacoes/ADD_REQUEST", addAplicacao)]);
+export default all([
+  takeLatest("@aplicacoes/ADD_REQUEST", addAplicacao),
+  takeLatest("@aplicacoes/ADD_SUCESS", addAplicacaoSucess)
+]);

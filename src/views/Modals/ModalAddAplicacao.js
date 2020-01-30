@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { connect } from "react-redux";
 import aplicacoes from "../../store/modules/aplicacoes/reducer";
+import { addAplicacaoRequest } from "../../store/modules/aplicacoes/actions";
 
 
 class ModalAddAplicacao extends Component {
@@ -15,10 +16,9 @@ class ModalAddAplicacao extends Component {
   }
 
   addAplicacaoHandler = nome => {
-    const { addAplicacaoRequest } = this.props;
-    // Início addAplicacao. Tem que terminar.
+    
      
-    addAplicacaoRequest(nome);
+    addAplicacaoRequest(nome)
   };
 
   toggle() {
@@ -50,8 +50,9 @@ class ModalAddAplicacao extends Component {
           </ModalBody>
           <ModalFooter>
             <Button
+              type="submit"
               color="primary"
-              onClick={() => this.addAplicacaoHandler()}
+              onClick={() => this.addAplicacaoHandler(nome)}
             >
               Adicionar aplicação
             </Button>{" "}
