@@ -1,5 +1,5 @@
 import produce from "immer";
-import api from '../../../services/api'
+import api from '../../../services/api';
 
 export default function aplicacoes(state = [api.get(aplicacoes)], action) {
   switch (action.type) {
@@ -12,10 +12,12 @@ export default function aplicacoes(state = [api.get(aplicacoes)], action) {
       });
 
       case "@aplicacoes/ADD_REQUEST":
-      return [...state, action.nome];  
+      return {...state, 
+        aplicacoes: [...state.aplicacoes, action.nome]};  
 
-    case "@aplicacoes/GUARDAR_APLICACOES_TESTE":
-      return state;
+    case "@aplicacoes/GUARDAR_APLICACOES":
+      return {...state,
+      aplicacoes: action.aplicacoes}
 
     default:
       return state;

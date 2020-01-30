@@ -11,3 +11,10 @@ export function addAplicacaoSucess(aplicacao) {
         aplicacao,
     }
 }
+
+export function guardarAplicacao(aplicacoes) {
+    return {
+        type: "@aplicacoes/GUARDAR_APLICACOES",
+        aplicacoes
+    }
+}

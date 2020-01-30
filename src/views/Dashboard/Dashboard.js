@@ -114,4 +114,7 @@ const mapStateToProps = state => ({
   aplicacoes: state.aplicacoes
 });
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
