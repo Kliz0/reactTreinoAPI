@@ -77,7 +77,7 @@ class ModalAddAplicacao extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  aplicacoes: aplicacao => dispatch(aplicacoes(aplicacao))
+  mudarNomeHandler: nome => dispatch(aplicacoes(...aplicacoes, nome))
 });
 
-export default connect(null, mapDispatchToProps)(ModalAddAplicacao);
+export default connect(mapDispatchToProps)(ModalAddAplicacao);

@@ -27,6 +27,7 @@ import Aplicacao from "../Aplicacao/Aplicacao";
 import ModalAddAplicacao from "../Modals/ModalAddAplicacao";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { addAplicacaoRequest } from "../../store/modules/aplicacoes/actions";
 
 const Widget03 = lazy(() => import("../Widgets/Widget03"));
 const brandPrimary = getStyle("--primary");
@@ -114,7 +115,6 @@ const mapStateToProps = state => ({
   aplicacoes: state.aplicacoes
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+
+export default connect(mapStateToProps)(Dashboard);

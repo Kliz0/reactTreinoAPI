@@ -2,11 +2,12 @@ import { call, put, all, takeLatest, select } from "redux-saga/effects";
 
 import api from "../../../services/api";
 
-import { addAplicacaoSucess } from "./actions";
+import {  addAplicacaoSucess } from "./actions";
 
-function* addAplicacao({ id, nome }) {
+function* addAplicacaoRequest(nome, id) {
   const aplicacaoExiste = yield select(state =>
-    state.aplicacao.find(a => a.nome === nome)
+    state.aplicacao.find(a => a.nome === nome),
+    console.log(this.state.aplicacoes)
   );
 
   if (aplicacaoExiste) {
@@ -15,7 +16,7 @@ function* addAplicacao({ id, nome }) {
     const response = yield call(api.post, `/aplicacao/${id}`);
     const data = {
       ...response.data,
-      id: Math.random * 1000
+      id: (Math.random * 1000)
     };
 
     yield put(addAplicacaoSucess(data));
@@ -24,6 +25,6 @@ function* addAplicacao({ id, nome }) {
 }
 
 export default all([
-  takeLatest("@aplicacoes/ADD_REQUEST", addAplicacao),
+  takeLatest("@aplicacoes/ADD_REQUEST", addAplicacaoRequest),
   takeLatest("@aplicacoes/ADD_SUCESS", addAplicacaoSucess)
 ]);
