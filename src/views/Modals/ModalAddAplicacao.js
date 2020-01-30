@@ -25,7 +25,6 @@ class ModalAddAplicacao extends Component {
 
   addAplicacaoHandler = nome => {
     aplicacaoActions.addAplicacaoRequest(nome);
-    console.log(aplicacaoActions.addAplicacaoRequest(nome));
   };
 
   toggle() {
