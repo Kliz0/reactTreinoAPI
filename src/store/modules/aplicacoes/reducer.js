@@ -6,7 +6,8 @@ export default function aplicacoes(state = [api.get(aplicacoes)], action) {
     case "@aplicacoes/ADD_SUCESS":
       return produce(state, draft => {
         const { aplicacao } = action.aplicacao;
-        draft.push(aplicacao);
+        /* draft.push(aplicacao); */
+        draft.aplicacao = aplicacao;
         // draft.push(action.aplicacao);
       });
 

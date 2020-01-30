@@ -4,21 +4,25 @@ import { connect } from "react-redux";
 import aplicacoes from "../../store/modules/aplicacoes/reducer";
 import { addAplicacaoRequest } from "../../store/modules/aplicacoes/actions";
 
-
 class ModalAddAplicacao extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      nomeAplicacao: ""
     };
 
     this.toggle = this.toggle.bind(this);
   }
 
+  mudarNome = evt => {
+    this.setState({
+      nomeAplicacao: evt.target.value
+    });
+  };
+
   addAplicacaoHandler = nome => {
-    
-     
-    addAplicacaoRequest(nome)
+    addAplicacaoRequest(nome);
   };
 
   toggle() {
@@ -45,14 +49,19 @@ class ModalAddAplicacao extends Component {
           <ModalHeader toggle={this.toggle}>Criar Aplicação</ModalHeader>
           <ModalBody>
             <p>
-              Nome da aplicação: <input type="text" />
+              Nome da aplicação:{" "}
+              <input
+                type="text"
+                value={this.state.nomeAplicacao}
+                onChange={this.mudarNome}
+              />
             </p>
           </ModalBody>
           <ModalFooter>
             <Button
               type="submit"
               color="primary"
-              onClick={() => this.addAplicacaoHandler(nome)}
+              onClick={() => this.addAplicacaoHandler(this.state.nomeAplicacao)}
             >
               Adicionar aplicação
             </Button>{" "}
@@ -68,6 +77,6 @@ class ModalAddAplicacao extends Component {
 
 const mapDispatchToProps = dispatch => ({
   aplicacoes: aplicacao => dispatch(aplicacoes(aplicacao))
-})
-  
+});
+
 export default connect(null, mapDispatchToProps)(ModalAddAplicacao);

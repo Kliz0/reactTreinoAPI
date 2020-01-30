@@ -4,6 +4,7 @@ import { Table, Button } from "reactstrap";
 import api from "../../services/api";
 import ModalAddServico from "../Modals/ModalAddServico";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
 
 class Aplicacao extends Component {
   state = {
@@ -15,11 +16,9 @@ class Aplicacao extends Component {
       match: { params }
     } = this.props;
 
-    api
-      .get(`http://localhost:3333/aplicacao/${params.idAplicacao}/servicos`)
-      .then(response => {
-        this.setState({ servicos: response.data });
-      });
+    api.get("http://localhost:3333/aplicacoes").then(response => {
+      this.setState({ aplicacoes: response.data });
+    });
 
     api
       .get(`http://localhost:3333/aplicacao/${params.idAplicacao}`)
@@ -29,8 +28,15 @@ class Aplicacao extends Component {
         this.setState({ aplicacao });
       });
 
-    const response = await api.get("servicos");
-    this.setState({ servicos: response.data });
+
+    api
+      .get(`http://localhost:3333/aplicacao/${params.idAplicacao}/servicos`)
+      .then(response => {
+        this.setState({ servicos: response.data });
+        console.log("servico", this.servico);
+      });
+
+     
   }
 
   servico = this.props.servico;
@@ -76,7 +82,7 @@ class Aplicacao extends Component {
                 <tr key={servico.id}>
                   <td>
                     <Link
-                      to={`http://localhost:3333/aplicacoes/${this.state.aplicacao.id}/servicos/${servico.id}`}
+                      to={`http://localhost:3333/aplicacoes/${this.state.aplicacao.id}/servicos/${this.servico}`}
                     >
                       {servico.Nome}
                     </Link>
@@ -92,4 +98,11 @@ class Aplicacao extends Component {
   }
 }
 
-export default Aplicacao;
+const mapStateToProps = state => ({
+    aplicacao: state.aplicacao,
+    aplicacoes: state.aplicacoes,
+    servicos: state.aplicacao.servicos,
+    servico: state.servico
+  });
+
+export default connect(mapStateToProps)(Aplicacao);
