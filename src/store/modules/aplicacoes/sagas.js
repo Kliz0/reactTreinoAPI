@@ -14,17 +14,13 @@ function* addAplicacaoRequest(nome, id) {
     console.log("Erro, nome igual na API");
   } else {
     const response = yield call(api.post, `/aplicacao/${id}`);
-    const data = {
-      ...response.data,
-      id: (Math.random * 1000)
-    };
+    
 
-    yield put(addAplicacaoSucess(data));
+    yield put(addAplicacaoSucess(response.data));
     console.log(this.state.aplicacoes);
   }
 }
 
 export default all([
-  takeLatest("@aplicacoes/ADD_REQUEST", addAplicacaoRequest),
-  takeLatest("@aplicacoes/ADD_SUCESS", addAplicacaoSucess)
+  takeLatest("@aplicacoes/ADD_REQUEST", addAplicacaoRequest)
 ]);

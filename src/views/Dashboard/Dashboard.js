@@ -114,6 +114,4 @@ const mapStateToProps = state => ({
   aplicacao: state.aplicacao,
   aplicacoes: state.aplicacoes
 });
-
-
 export default connect(mapStateToProps)(Dashboard);
