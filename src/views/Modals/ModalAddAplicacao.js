@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { connect } from "react-redux";
-import aplicacao from "../../store/modules/aplicacao/reducer";
+import aplicacoes from "../../store/modules/aplicacoes/reducer";
+
 
 class ModalAddAplicacao extends Component {
   constructor(props) {
@@ -16,11 +17,7 @@ class ModalAddAplicacao extends Component {
   addAplicacaoHandler = nome => {
     const { addAplicacaoRequest } = this.props;
     // Início addAplicacao. Tem que terminar.
-   /*  dispatch({
-      type: "@aplicacoes/ADD_REQUEST",
-      nome
-    }); */
-
+     
     addAplicacaoRequest(nome);
   };
 
@@ -54,7 +51,7 @@ class ModalAddAplicacao extends Component {
           <ModalFooter>
             <Button
               color="primary"
-              onClick={() => this.addAplicacaoHandler(aplicacao)}
+              onClick={() => this.addAplicacaoHandler()}
             >
               Adicionar aplicação
             </Button>{" "}
@@ -68,8 +65,8 @@ class ModalAddAplicacao extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  aplicacao: state.aplicacao
-});
-
-export default connect(mapStateToProps)(ModalAddAplicacao);
+const mapDispatchToProps = dispatch => ({
+  aplicacoes: aplicacao => dispatch(aplicacoes(aplicacao))
+})
+  
+export default connect(null, mapDispatchToProps)(ModalAddAplicacao);
