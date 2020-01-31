@@ -48,7 +48,7 @@ class Dashboard extends Component {
   };
 
   async componentDidMount() {
-    api.get("/aplicacoes").then(response => {
+    api.get("aplicacoes").then(response => {
       this.setState({ aplicacoes: response.data });
     });
   }
