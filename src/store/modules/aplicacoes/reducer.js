@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 
 export default function aplicacoes(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case "@aplicacoes/ADD_SUCESS":
+    case '@aplicacoes/ADD_SUCESS':
       /* return  this.setState(produce(state, draft => {
         console.log(this.state.aplicacoes);
 
@@ -22,7 +22,7 @@ export default function aplicacoes(state = INITIAL_STATE, action) {
 
       return this.setState([...INITIAL_STATE, action.aplicacao]);
 
-    case "@aplicacoes/ADD_REQUEST":
+    case '@aplicacoes/ADD_REQUEST':
       return {
         ...state.aplicacoes,
         aplicacoes: [...INITIAL_STATE, action.nome]

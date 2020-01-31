@@ -4,7 +4,7 @@ import { Table, Button } from "reactstrap";
 import api from "../../services/api";
 import ModalAddServico from "../Modals/ModalAddServico";
 import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 class Aplicacao extends Component {
   state = {
@@ -16,27 +16,20 @@ class Aplicacao extends Component {
       match: { params }
     } = this.props;
 
-    api.get("http://localhost:3333/aplicacoes").then(response => {
+    api.get("/aplicacoes").then(response => {
       this.setState({ aplicacoes: response.data });
     });
 
-    api
-      .get(`http://localhost:3333/aplicacao/${params.idAplicacao}`)
-      .then(({ data: aplicacao }) => {
-        console.log("aplicacao", aplicacao);
+    api.get(`/aplicacao/${params.idAplicacao}`).then(({ data: aplicacao }) => {
+      this.setState({ aplicacao });
+    });
 
-        this.setState({ aplicacao });
-      });
-
-
-    api
+    /*  api
       .get(`http://localhost:3333/aplicacao/${params.idAplicacao}/servicos`)
       .then(response => {
         this.setState({ servicos: response.data });
         console.log("servico", this.servico);
-      });
-
-     
+      }); */
   }
 
   servico = this.props.servico;
@@ -99,9 +92,8 @@ class Aplicacao extends Component {
 }
 
 const mapStateToProps = state => ({
-    aplicacao: state.aplicacao,
-    aplicacoes: state.aplicacoes,
-    servico: state.servico
-  });
+  aplicacao: state.aplicacao,
+  
+});
 
 export default connect(mapStateToProps)(Aplicacao);

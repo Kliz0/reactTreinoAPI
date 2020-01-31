@@ -52,7 +52,7 @@ class Dashboard extends Component {
       this.setState({ aplicacoes: response.data });
     });
   }
-  
+
   aplicacao = this.props.aplicacao;
 
   render() {
@@ -97,13 +97,10 @@ class Dashboard extends Component {
             </thead>
             <tbody style={{ fontSize: 18 }}>
               {aplicacoes.map(aplicacao => (
-                <tr>
-                <td key={aplicacao.idAplicacao}>
+                <tr key={aplicacao.idAplicacao}>
                   <Link to={`/aplicacao/${aplicacao.idAplicacao}`}>
                     {aplicacao.Nome}
                   </Link>
-                </td>
-                {/* <td>[{aplicacao.servicos}]</td> */}
                 </tr>
               ))}
             </tbody>
@@ -116,6 +113,6 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   aplicacao: state.aplicacao,
-  aplicacoes: state.aplicacoes,
+  aplicacoes: state.aplicacoes
 });
 export default connect(mapStateToProps)(Dashboard);
