@@ -101,7 +101,6 @@ class Aplicacao extends Component {
 const mapStateToProps = state => ({
     aplicacao: state.aplicacao,
     aplicacoes: state.aplicacoes,
-    servicos: state.aplicacao.servicos,
     servico: state.servico
   });
 

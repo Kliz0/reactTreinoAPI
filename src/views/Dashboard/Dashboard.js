@@ -92,14 +92,18 @@ class Dashboard extends Component {
             <thead style={{ fontSize: 18, fontWeight: "bold" }}>
               <tr>
                 <th>Nome Aplicação</th>
+                <th>Serviços</th>
               </tr>
             </thead>
             <tbody style={{ fontSize: 18 }}>
               {aplicacoes.map(aplicacao => (
-                <tr key={aplicacao.idAplicacao}>
+                <tr>
+                <td key={aplicacao.idAplicacao}>
                   <Link to={`/aplicacao/${aplicacao.idAplicacao}`}>
                     {aplicacao.Nome}
                   </Link>
+                </td>
+                {/* <td>[{aplicacao.servicos}]</td> */}
                 </tr>
               ))}
             </tbody>
@@ -112,6 +116,6 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   aplicacao: state.aplicacao,
-  aplicacoes: state.aplicacoes
+  aplicacoes: state.aplicacoes,
 });
 export default connect(mapStateToProps)(Dashboard);

@@ -1,25 +1,34 @@
 import produce from "immer";
 import api from "../../../services/api";
 
-export default function aplicacoes(state = [api.get(aplicacoes)], action) {
+const INITIAL_STATE = {
+  aplicacoes: api.get(aplicacoes)
+}
+
+export default function aplicacoes(state = INITIAL_STATE, action) {
   switch (action.type) {
     case "@aplicacoes/ADD_SUCESS":
-      return  this.setState(produce(state, draft => {
+      /* return  this.setState(produce(state, draft => {
         console.log(this.state.aplicacoes);
 
         const { aplicacao } = action.aplicacao;
         draft.push(aplicacao);
-        /* draft.aplicacao = aplicacao; */
+         draft.aplicacao = aplicacao; 
 
         console.log(this.state.aplicacoes);
 
-        // draft.push(action.aplicacao);
-      }));
+         draft.push(action.aplicacao);
+      })); */
+
+      return this.setState([...state, action.aplicacao]);
 
     case "@aplicacoes/ADD_REQUEST":
-      return { ...state.aplicacoes, aplicacoes: [...state.aplicacoes, action.nome] }
-      
-/*       
+      return {
+        ...state.aplicacoes,
+        aplicacoes: [...state, action.nome]
+      };
+
+    /*       
 
     case "@aplicacoes/GUARDAR_APLICACOES":
       return { ...state, aplicacoes: action.aplicacoes }; */
