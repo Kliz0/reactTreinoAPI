@@ -4,7 +4,7 @@ import api from "../../../services/api";
 
 import { addServicoSucess } from "./actions";
 
-function* addServico({ id, nome, idAplicacao }) {
+function* addServico({ nome, id, idAplicacao }) {
   const servicoExiste = yield select(state =>
     state.servicos.find(s => s.nome === nome)
   );
@@ -12,11 +12,12 @@ function* addServico({ id, nome, idAplicacao }) {
     id = this.state.servicos.length + 1;
     const response = yield call(
       api.post,
-      `/aplicacoes/${idAplicacao}/servicos/${id}/detalhar`
+      `/aplicacoes/${idAplicacao}/servicos/`,
+      {id}
     );
 
     yield put(addServicoSucess(response.data));
-    console.log(id, nome);
+    console.log(nome);
   } else {
     return Error; // placeholder
   }

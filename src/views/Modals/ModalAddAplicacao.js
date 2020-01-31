@@ -23,8 +23,8 @@ class ModalAddAplicacao extends Component {
     });
   };
 
-  addAplicacaoHandler = nome => {
-    aplicacaoActions.addAplicacaoRequest(nome);
+  addAplicacaoHandler = nomeAplicacao => {
+    aplicacaoActions.addAplicacaoRequest({nomeAplicacao});
   };
 
   toggle() {

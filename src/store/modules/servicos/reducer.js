@@ -9,12 +9,12 @@ const INITIAL_STATE = {
 export default function servicos(state = INITIAL_STATE, action) {
   switch (action.type) {
     case "@servicos/ADD_SUCESS":
-      return produce(state, draft => {
+      return produce(INITIAL_STATE, draft => {
         draft.push(action.servico);
       });
 
     case "@servicos/ADD_REQUEST":
-      return [...state, action.servico];
+      return [...state, action.nome];
 
     case "@servicos/GUARDAR_APLICACOES_TESTE":
       return state;

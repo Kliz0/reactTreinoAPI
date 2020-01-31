@@ -82,7 +82,7 @@ class Aplicacao extends Component {
                 <tr key={servico.id}>
                   <td>
                     <Link
-                      to={`http://localhost:3333/aplicacoes/${this.state.aplicacao.id}/servicos/${this.servico}`}
+                      to={`/aplicacoes/${this.state.aplicacao.id}/servicos/${this.servico}`}
                     >
                       {servico.Nome}
                     </Link>

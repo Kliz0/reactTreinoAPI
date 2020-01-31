@@ -48,11 +48,11 @@ class Dashboard extends Component {
   };
 
   async componentDidMount() {
-    api.get("http://localhost:3333/aplicacoes").then(response => {
+    api.get("/aplicacoes").then(response => {
       this.setState({ aplicacoes: response.data });
     });
   }
-
+  
   aplicacao = this.props.aplicacao;
 
   render() {

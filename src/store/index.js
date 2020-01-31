@@ -19,7 +19,7 @@ const sagaMonitor =
     : null; */
     
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
+const middlewares = [sagaMiddleware, logger];
 if(process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
 }

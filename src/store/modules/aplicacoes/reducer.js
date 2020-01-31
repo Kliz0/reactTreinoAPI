@@ -20,12 +20,12 @@ export default function aplicacoes(state = INITIAL_STATE, action) {
          draft.push(action.aplicacao);
       })); */
 
-      return this.setState([...state, action.aplicacao]);
+      return this.setState([...INITIAL_STATE, action.aplicacao]);
 
     case "@aplicacoes/ADD_REQUEST":
       return {
         ...state.aplicacoes,
-        aplicacoes: [...state, action.nome]
+        aplicacoes: [...INITIAL_STATE, action.nome]
       };
 
     /*       
