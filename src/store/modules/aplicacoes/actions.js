@@ -1,22 +1,27 @@
 export function addAplicacaoRequest(nome) {
-    return {
-        type: '@aplicacoes/ADD_REQUEST',
-        nome
-    };
+  return {
+    type: "@aplicacoes/ADD_REQUEST",
+    nome
+  };
 }
 
 export function addAplicacaoSucess(aplicacao) {
-    return {
-        type: '@aplicacoes/ADD_SUCESS',
-        aplicacao       
-    }
+  return {
+    type: "@aplicacoes/ADD_SUCESS",
+    aplicacao
+  };
 }
 
-export function updateAplicacoes(aplicacoes) {
-    return {
-        type: '@aplicacoes/UPDATE',
-        aplicacoes
-    }
+export function updateAplicacoesRequest(aplicacoes) {
+  return {
+    type: "@aplicacoes/UPDATE_REQUEST",
+    aplicacoes
+  };
 }
 
-
+export function updateAplicacoesSUCCESS(aplicacoes) {
+  return {
+    type: "@aplicacoes/UPDATE_SUCESS",
+    aplicacoes
+  };
+}
