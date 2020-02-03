@@ -5,7 +5,7 @@ import api from "../../../services/api";
 import {
   addAplicacaoSucess,
   updateAplicacoesRequest,
-  updateAplicacoesSUCCESS
+  updateAplicacoesSuccess
 } from "./actions";
 
 function* addAplicacaoRequest({ nome }) {
@@ -25,7 +25,7 @@ function* addAplicacaoRequest({ nome }) {
 
 function* updateAplicacoes({ aplicacoes }) {
   if (this.state.aplicacoes !== aplicacoes) {
-    yield put(updateAplicacoesSUCCESS(aplicacoes));
+    yield put(updateAplicacoesSuccess(aplicacoes));
   } else {
     return aplicacoes;
   }

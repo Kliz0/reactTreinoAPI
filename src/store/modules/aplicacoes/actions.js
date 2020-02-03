@@ -19,7 +19,7 @@ export function updateAplicacoesRequest(aplicacoes) {
   };
 }
 
-export function updateAplicacoesSUCCESS(aplicacoes) {
+export function updateAplicacoesSuccess(aplicacoes) {
   return {
     type: "@aplicacoes/UPDATE_SUCESS",
     aplicacoes
