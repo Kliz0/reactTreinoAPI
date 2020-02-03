@@ -18,12 +18,13 @@ export default function aplicacoes(state = INITIAL_STATE, action) {
 
     case "@aplicacoes/UPDATE_REQUEST":
       return {
-        ...state.aplicacoes
+        ...state
       };
 
     case "@aplicacoes/UPDATE_SUCCESS":
       return {
-        ...state.aplicacoes
+        ...state,
+        aplicacoes: action.aplicacoes
       };
 
     default:
