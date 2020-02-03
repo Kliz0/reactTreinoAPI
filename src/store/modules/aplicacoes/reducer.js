@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   aplicacoes: []
 };
 
-export default function aplicacoes(state = INITIAL_STATE, action) {
+export default function aplicacoesReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case "@aplicacoes/ADD_SUCESS":
       return this.setState([...INITIAL_STATE, action.aplicacao]);

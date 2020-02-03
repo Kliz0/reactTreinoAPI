@@ -6,7 +6,7 @@ import { addServicoSucess } from "./actions";
 
 function* addServico({ nome, id, idAplicacao }) {
   const servicoExiste = yield select(state =>
-    state.servicos.find(s => s.nome === nome)
+    state.servicos.servicosReducer.find(s => s.nome === nome)
   );
   if (!servicoExiste) {
     id = this.state.servicos.length + 1;

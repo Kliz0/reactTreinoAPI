@@ -2,11 +2,15 @@ import { call, put, all, takeLatest, select } from "redux-saga/effects";
 
 import api from "../../../services/api";
 
-import { addAplicacaoSucess, updateAplicacoes, updateAplicacoesRequest } from "./actions";
+import {
+  addAplicacaoSucess,
+  updateAplicacoesRequest,
+  updateAplicacoesSUCCESS
+} from "./actions";
 
 function* addAplicacaoRequest({ nome }) {
   const aplicacaoExiste = yield select(state =>
-    state.aplicacoes.aplicacoes.find(a => a.nome === nome)
+    state.aplicacoes.aplicacoesReducer.find(a => a.nome === nome)
   );
 
   if (aplicacaoExiste) {
@@ -19,11 +23,15 @@ function* addAplicacaoRequest({ nome }) {
   }
 }
 
-function* updateAplicacoesRequest({ aplicacoes }) {
-  
+function* updateAplicacoes({ aplicacoes }) {
+  if (this.state.aplicacoes !== aplicacoes) {
+    yield put(updateAplicacoesSUCCESS(aplicacoes));
+  } else {
+    return aplicacoes;
+  }
 }
 
-
 export default all([
-  takeLatest("@aplicacoes/ADD_REQUEST", addAplicacaoRequest)
+  takeLatest("@aplicacoes/ADD_REQUEST", addAplicacaoRequest),
+  takeLatest("aplicacoes/UPDATE_REQUEST", updateAplicacoes)
 ]);

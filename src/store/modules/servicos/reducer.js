@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   servicos: []
 };
 
-export default function servicos(state = INITIAL_STATE, action) {
+export default function servicosReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case "@servicos/ADD_SUCESS":
       return this.setState([...INITIAL_STATE, action.servico]);
