@@ -2,24 +2,22 @@ import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { connect } from 'react-redux';
 import servico from '../../store/modules/servicos/reducer';
+import { bindActionCreators } from 'redux';
+import * as servicoActions from "../../store/modules/servicos/actions";
 
 class ModalAddServico extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      nomeServico: ""
     };
 
     this.toggle = this.toggle.bind(this);
   }
 
-  addServicoHandler = nome => {
-    const { dispatch } = this.props;
-    // Início addAplicacao. Tem que terminar.
-    dispatch({
-      type: "@aplicacoes/ADD_REQUEST",
-      nome
-    });
+  addServicoHandler = nomeServico => {
+    this.props.addServicoRequest(nomeServico);
   };
   toggle() {
     this.setState({
@@ -67,4 +65,7 @@ const mapStateToProps = state => ({
   servicos: state.servicos
 });
 
-export default connect(mapStateToProps)(ModalAddServico);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(servicoActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalAddServico);
