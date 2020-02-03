@@ -14,6 +14,16 @@ export default function servicosReducer(state = INITIAL_STATE, action) {
     case "@servicos/ADD_REQUEST":
       return { ...state, servicos: [...state.servicos, action.nome] };
 
+    case "@servicos/UPDATE_REQUEST":
+      return {
+        ...state
+      };
+
+    case "@servicos/UPDATE_SUCCESS":
+      return {
+        ...state,
+        servicos: action.servicos
+      };
 
     default:
       return state;

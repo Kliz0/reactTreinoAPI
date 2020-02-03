@@ -4,7 +4,7 @@ import api from "../../../services/api";
 
 import { addServicoSucess } from "./actions";
 
-function* addServico({ nome, id, idAplicacao }) {
+function* addServicoRequest({ nome, id, idAplicacao }) {
   const servicoExiste = yield select(state =>
     state.servicos.servicosReducer.find(s => s.nome === nome)
   );
@@ -24,5 +24,5 @@ function* addServico({ nome, id, idAplicacao }) {
 }
 
 export default all([
-  takeLatest("@servicos/ADD_REQUEST", addServico),
+  takeLatest("@servicos/ADD_REQUEST", addServicoRequest),
 ]);

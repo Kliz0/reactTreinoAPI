@@ -11,3 +11,17 @@ export function addServicoSucess(servico) {
         servico,
     }
 }
+
+export function updateServicosRequest(servicos) {
+    return {
+      type: "@aplicacoes/UPDATE_REQUEST",
+      servicos
+    };
+  }
+  
+  export function updateServicosSuccess(servicos) {
+    return {
+      type: "@aplicacoes/UPDATE_SUCESS",
+      servicos
+    };
+  }
