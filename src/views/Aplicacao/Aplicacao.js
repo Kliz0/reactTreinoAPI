@@ -25,6 +25,10 @@ class Aplicacao extends Component {
       this.setState({ aplicacao });
     });
 
+    api.get(`/aplicacao/${params.id}/servicos`).then(({ data: servicos }) => {
+      this.setState({ servicos });
+    });
+
     /*  api
       .get(`http://localhost:3333/aplicacao/${params.id}/servicos`)
       .then(response => {
