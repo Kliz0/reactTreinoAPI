@@ -92,8 +92,7 @@ class Aplicacao extends Component {
 }
 
 const mapStateToProps = state => ({
-  aplicacao: state.aplicacao,
-  
+  aplicacao: state.aplicacao
 });
 
 export default connect(mapStateToProps)(Aplicacao);

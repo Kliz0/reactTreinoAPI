@@ -3,8 +3,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { connect } from "react-redux";
 import aplicacoes from "../../store/modules/aplicacoes/reducer";
 /* import { addAplicacaoRequest, addAplicacaoSucess } from "../../store/modules/aplicacoes/actions"; */
-import { bindActionCreators } from 'redux'
-import * as aplicacaoActions from '../../store/modules/aplicacoes/actions';
+import { bindActionCreators } from "redux";
+import * as aplicacaoActions from "../../store/modules/aplicacoes/actions";
 
 class ModalAddAplicacao extends Component {
   constructor(props) {
@@ -81,7 +81,6 @@ class ModalAddAplicacao extends Component {
   mudarNomeHandler: aplicacaoNome =>
     dispatch({ type: "@aplicacoes/ADD_REQUEST", nomeAplicacao: aplicacaoNome })
 }); */
-
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(aplicacaoActions, dispatch);
