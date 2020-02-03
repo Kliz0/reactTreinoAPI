@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
-import aplicacoes from "./aplicacoes/reducer";
-import servicos from "./servicos/reducer";
+import aplicacoesReducer from "./aplicacoes/reducer";
+import servicosReducer from "./servicos/reducer";
 
 const reducers = combineReducers({
   // Remova essa linha depois de adicionar seus ducks
-  aplicacoes,
-  servicos
+  aplicacoesReducer,
+  servicosReducer
 });
 
 export default reducers;

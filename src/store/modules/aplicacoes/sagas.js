@@ -19,19 +19,19 @@ function* addAplicacaoRequest({ nome }) {
     const response = yield call(api.post, `/aplicacoes/`, { nome });
 
     yield put(addAplicacaoSucess(response.data));
-    yield put(updateAplicacoesRequest());
+    /* yield put(updateAplicacoesRequest()); */
   }
 }
 
-function* updateAplicacoes({ aplicacoes }) {
+/* function* updateAplicacoes({ aplicacoes }) {
   if (this.state.aplicacoes !== aplicacoes) {
     yield put(updateAplicacoesSuccess(aplicacoes));
   } else {
     return aplicacoes;
   }
 }
-
+ */
 export default all([
   takeLatest("@aplicacoes/ADD_REQUEST", addAplicacaoRequest),
-  takeLatest("aplicacoes/UPDATE_REQUEST", updateAplicacoes)
+  /* takeLatest("aplicacoes/UPDATE_REQUEST", updateAplicacoes) */
 ]);
