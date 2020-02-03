@@ -92,7 +92,6 @@ class Dashboard extends Component {
             <thead style={{ fontSize: 18, fontWeight: "bold" }}>
               <tr>
                 <th>Nome Aplicação</th>
-                <th>Serviços</th>
               </tr>
             </thead>
             <tbody style={{ fontSize: 18 }}>
