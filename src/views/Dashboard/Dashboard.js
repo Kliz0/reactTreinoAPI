@@ -97,7 +97,7 @@ class Dashboard extends Component {
             <tbody style={{ fontSize: 18 }}>
               {aplicacoes.map(aplicacao => (
                 <tr key={aplicacao.id}>
-                  <Link to={`/aplicacao/${aplicacao.idAplicacao}`}>
+                  <Link to={`/aplicacao/${aplicacao.id}`}>
                     {aplicacao.Nome}
                   </Link>
                 </tr>

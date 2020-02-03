@@ -14,6 +14,7 @@ export default function servicos(state = INITIAL_STATE, action) {
     case "@servicos/ADD_REQUEST":
       return { ...state, servicos: [...state.servicos, action.nome] };
 
+
     default:
       return state;
   }

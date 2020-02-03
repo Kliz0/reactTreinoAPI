@@ -16,16 +16,16 @@ class Aplicacao extends Component {
       match: { params }
     } = this.props;
 
-    api.get("/aplicacoes").then(response => {
+    /* api.get("/aplicacoes").then(response => {
       this.setState({ aplicacoes: response.data });
-    });
+    }); */
 
-    api.get(`/aplicacao/${params.idAplicacao}`).then(({ data: aplicacao }) => {
+    api.get(`/aplicacao/${params.id}`).then(({ data: aplicacao }) => {
       this.setState({ aplicacao });
     });
 
     /*  api
-      .get(`http://localhost:3333/aplicacao/${params.idAplicacao}/servicos`)
+      .get(`http://localhost:3333/aplicacao/${params.id}/servicos`)
       .then(response => {
         this.setState({ servicos: response.data });
         console.log("servico", this.servico);
@@ -92,7 +92,9 @@ class Aplicacao extends Component {
 }
 
 const mapStateToProps = state => ({
-  aplicacao: state.aplicacao
+  aplicacao: state.aplicacao,
+  servicos: state.servicos,
+  aplicacoes: state.aplicacoes
 });
 
 export default connect(mapStateToProps)(Aplicacao);
