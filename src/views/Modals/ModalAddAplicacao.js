@@ -24,7 +24,7 @@ class ModalAddAplicacao extends Component {
   };
 
   addAplicacaoHandler = nomeAplicacao => {
-    aplicacaoActions.addAplicacaoRequest({nomeAplicacao});
+    this.props.addAplicacaoRequest(nomeAplicacao);
   };
 
   toggle() {
@@ -86,4 +86,4 @@ class ModalAddAplicacao extends Component {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(aplicacaoActions, dispatch);
 
-export default connect(mapDispatchToProps)(ModalAddAplicacao);
+export default connect(undefined, mapDispatchToProps)(ModalAddAplicacao);

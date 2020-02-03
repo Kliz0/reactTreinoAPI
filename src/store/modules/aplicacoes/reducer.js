@@ -2,7 +2,7 @@ import produce from "immer";
 import api from "../../../services/api";
 
 const INITIAL_STATE = {
-  aplicacoes: api.get(aplicacoes)
+  aplicacoes: []
 }
 
 export default function aplicacoes(state = INITIAL_STATE, action) {
@@ -23,9 +23,10 @@ export default function aplicacoes(state = INITIAL_STATE, action) {
       return this.setState([...INITIAL_STATE, action.aplicacao]);
 
     case '@aplicacoes/ADD_REQUEST':
-      return {
-        ...state.aplicacoes,
-        aplicacoes: [...INITIAL_STATE, action.nome]
+      console.log("aaaaaaa")  
+    return {
+        ...state,
+        aplicacoes: [...state.aplicacoes, action.nome]
       };
 
     /*       

@@ -6,13 +6,13 @@ import { addAplicacaoSucess } from "./actions";
 
 function* addAplicacaoRequest({ nome }) {
   const aplicacaoExiste = yield select(state =>
-    state.aplicacoes.find(a => a.nome === nome)
+    state.aplicacoes.aplicacoes.find(a => a.nome === nome)
   );
 
   if (aplicacaoExiste) {
     console.log("Erro, nome igual na API");
   } else {
-    const response = yield call(api.post, `/aplicacao/`, { nome });
+    const response = yield call(api.post, `/aplicacoes/`, { nome });
 
     yield put(addAplicacaoSucess(response.data));
   }
