@@ -10,7 +10,7 @@ import {
 
 function* addAplicacaoRequest({ nome }) {
   const aplicacaoExiste = yield select(state =>
-    state.aplicacoes.aplicacoesReducer.find(a => a.nome === nome)
+    state.aplicacoesReducer.aplicacoes.find(a => a.nome === nome)
   );
 
   if (aplicacaoExiste) {

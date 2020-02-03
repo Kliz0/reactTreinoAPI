@@ -8,6 +8,7 @@ const INITIAL_STATE = {
 export default function aplicacoesReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case "@aplicacoes/ADD_SUCESS":
+      console.log("aaa");
       return this.setState([...INITIAL_STATE, action.aplicacao]);
 
     case "@aplicacoes/ADD_REQUEST":
