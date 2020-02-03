@@ -8,15 +8,15 @@ export function addAplicacaoRequest(nome) {
 export function addAplicacaoSucess(aplicacao) {
     return {
         type: '@aplicacoes/ADD_SUCESS',
-        aplicacao
-
-        
+        aplicacao       
     }
 }
 
-export function guardarAplicacao(aplicacoes) {
+export function updateAplicacoes(aplicacoes) {
     return {
-        type: "@aplicacoes/GUARDAR_APLICACOES",
+        type: '@aplicacoes/UPDATE',
         aplicacoes
     }
 }
+
+

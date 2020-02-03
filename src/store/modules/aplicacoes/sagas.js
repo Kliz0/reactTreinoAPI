@@ -2,7 +2,7 @@ import { call, put, all, takeLatest, select } from "redux-saga/effects";
 
 import api from "../../../services/api";
 
-import { addAplicacaoSucess } from "./actions";
+import { addAplicacaoSucess, updateAplicacoes } from "./actions";
 
 function* addAplicacaoRequest({ nome }) {
   const aplicacaoExiste = yield select(state =>
@@ -15,6 +15,7 @@ function* addAplicacaoRequest({ nome }) {
     const response = yield call(api.post, `/aplicacoes/`, { nome });
 
     yield put(addAplicacaoSucess(response.data));
+    yield put(updateAplicacoes);
   }
 }
 

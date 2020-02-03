@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 
 class Aplicacao extends Component {
   state = {
+    aplicacao: [],
     servicos: []
   };
 

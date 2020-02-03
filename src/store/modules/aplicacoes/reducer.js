@@ -16,6 +16,11 @@ export default function aplicacoes(state = INITIAL_STATE, action) {
         aplicacoes: [...state.aplicacoes, action.nome]
       };
 
+    case "@aplicacoes/UPDATE":     
+      return {
+        ...state.aplicacoes
+      };
+
     default:
       return state;
   }

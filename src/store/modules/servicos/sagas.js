@@ -25,5 +25,4 @@ function* addServico({ nome, id, idAplicacao }) {
 
 export default all([
   takeLatest("@servicos/ADD_REQUEST", addServico),
-  takeLatest("@servicos/ADD_SUCESS", addServicoSucess)
 ]);
