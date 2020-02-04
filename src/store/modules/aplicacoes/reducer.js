@@ -22,7 +22,7 @@ export default function aplicacoesReducer(state = INITIAL_STATE, action) {
       };
 
     case "@aplicacoes/UPDATE_SUCCESS":
-      return this.setState([...INITIAL_STATE, action.aplicacoes]);
+      return this.setState([...state, action.aplicacoes]);
 
     default:
       return state;
