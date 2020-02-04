@@ -2,11 +2,7 @@ import { call, put, all, takeLatest, select } from "redux-saga/effects";
 
 import api from "../../../services/api";
 
-import {
-  addAplicacaoSucess,
-  updateAplicacoesRequest,
-  updateAplicacoesSuccess
-} from "./actions";
+import { addAplicacaoSucess, updateAplicacoesSuccess } from "./actions";
 
 function* addAplicacaoRequest({ nome }) {
   const aplicacaoExiste = yield select(state =>
@@ -19,19 +15,16 @@ function* addAplicacaoRequest({ nome }) {
     const response = yield call(api.post, `/aplicacoes/`, { nome });
 
     yield put(addAplicacaoSucess(response.data));
-    /* yield put(updateAplicacoesRequest()); */
+     yield put(updateAplicacoes());
   }
 }
 
-/* function* updateAplicacoes({ aplicacoes }) {
-  if (this.state.aplicacoes !== aplicacoes) {
-    yield put(updateAplicacoesSuccess(aplicacoes));
-  } else {
-    return aplicacoes;
-  }
+function* updateAplicacoes() {
+  yield select(state => state.aplicacoesReducer.aplicacoes);
+  yield put(updateAplicacoesSuccess());
 }
- */
+
 export default all([
   takeLatest("@aplicacoes/ADD_REQUEST", addAplicacaoRequest),
-  /* takeLatest("aplicacoes/UPDATE_REQUEST", updateAplicacoes) */
+  takeLatest("aplicacoes/UPDATE_REQUEST", updateAplicacoes)
 ]);

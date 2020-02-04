@@ -1,8 +1,8 @@
 import { all } from "redux-saga/effects";
 
-import aplicacao from "./aplicacoes/sagas";
-import servico from "./servicos/sagas";
+import aplicacoes from "./aplicacoes/sagas";
+import servicos from "./servicos/sagas";
 
 export default function* rootSaga() {
-  return yield all([aplicacao, servico]);
+  return yield all([aplicacoes, servicos]);
 }
